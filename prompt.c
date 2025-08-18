@@ -29,7 +29,9 @@ int main(void)
 		pid = fork();
 		if (pid == 0)
 		{
-			char *argv[]= {lineptr, NULL};
+			char *argv[2];
+			argv[0] = lineptr;
+			argv[1] = NULL;
 			execve(argv[0], argv, environ);
 			perror(lineptr);
 			exit(1);
