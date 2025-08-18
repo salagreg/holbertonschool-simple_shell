@@ -10,23 +10,24 @@ int main(void)
 	size_t len = 0;
 	ssize_t nread;
 
-	printf("$ ");
-	nread = getline(&lineptr, &len, stdin);
-
-	if (nread == -1)
+	while (1)
 	{
-		printf("Erreur");
-		exit(0);
+		printf("$ ");
+		nread = getline(&lineptr, &len, stdin);
+
+		if (nread == -1)
+		{
+			free(lineptr);
+			exit(0);
+		}
+
+		if (lineptr[nread - 1] == '\n')
+		{
+			lineptr[nread - 1] = '\0';
+		}
+		printf("%s\n", lineptr);
+
+		free(lineptr);
 	}
-	else if (nread == 0)
-	{
-		printf("Fin de fichier\n");
-		return (0);
-	}
-
-	printf("%s\n", lineptr);
-
-	free(lineptr);
-
 	return (0);
 }
