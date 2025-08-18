@@ -26,8 +26,7 @@ int main(void)
 			lineptr[nread - 1] = '\0';
 		}
 		printf("%s\n", lineptr);
-
-		free(lineptr);
 	}
+	free(lineptr);
 	return (0);
 }
