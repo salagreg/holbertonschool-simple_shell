@@ -7,7 +7,6 @@
 #include <string.h>
 #include <sys/types.h>
 #include <sys/wait.h>
-#include <libc.h>
 #include <errno.h>
 
 ssize_t getline(char **lineptr, size_t *n, FILE *stream);
