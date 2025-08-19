@@ -32,6 +32,9 @@ int main(void)
 
 	parse_command(lineptr, argv);
 
+	if (handle_builtin(argv, lineptr))
+		continue;
+
         pid = fork();
         if (pid == 0)
         {
