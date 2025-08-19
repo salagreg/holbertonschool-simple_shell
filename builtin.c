@@ -20,6 +20,9 @@ int handle_builtin(char **argv, char *lineptr)
             free(lineptr);
             exit(0);
         }
+        else {
+            return (1);
+        }
 	}
     
     else if (strcmp(argv[0], "env") == 0)
