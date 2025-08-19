@@ -32,7 +32,7 @@ int main(void)
 
 	parse_command(lineptr, argv);
 
-	if (handle_builtin(argv, lineptr))
+	if (handle_builtin(argv))
 		continue;
 
         pid = fork();

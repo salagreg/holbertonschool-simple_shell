@@ -8,21 +8,20 @@
  * Return: 1 si une builtin a été exécutée, 0 sinon
  */
 
-int handle_builtin(char **argv, char *lineptr)
-int index;
+int handle_builtin(char **argv)
 {
+    if (argv[0] == NULL)
+        return (0);
+    
     if (strcmp(argv[0], "exit") == 0)
-    {
-        free(lineptr);
+	{
         exit(0);
-    }
-    if (strcmp(argv[0],"env") == 0)
+	}
+    
+    else if (strcmp(argv[0], "env") == 0)
     {
-	    for (i = 0; environ[i] !=NULL; index++)
-	    {
-		    printf("%s_n", environ[index]);
-	    }
-	    return(1);
+        builtin_env();
+        return (1);
     }
 
     return (0);
