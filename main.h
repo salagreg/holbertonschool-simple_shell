@@ -13,6 +13,6 @@ extern char **environ;
 
 ssize_t getline(char **lineptr, size_t *n, FILE *stream);
 int parse_command(char *line, char **argv);
-int handle_builtin(char **argv);
+int handle_builtin(char **argv, char *lineptr);
 int builtin_env(void);
 #endif

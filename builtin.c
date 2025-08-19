@@ -8,13 +8,14 @@
  * Return: 1 si une builtin a été exécutée, 0 sinon
  */
 
-int handle_builtin(char **argv)
+int handle_builtin(char **argv, char *lineptr)
 {
     if (argv[0] == NULL)
         return (0);
     
     if (strcmp(argv[0], "exit") == 0)
 	{
+        free(lineptr);
         exit(0);
 	}
     
