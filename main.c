@@ -13,8 +13,10 @@ int main(void)
     size_t len = 0;
     ssize_t nread;
     pid_t pid;
+
     while (1)
     {
+	char *argv[64];
 	if (isatty(STDIN_FILENO))
 		printf("$ ");
         nread = getline(&lineptr, &len, stdin);
@@ -27,12 +29,12 @@ int main(void)
             lineptr[nread - 1] = '\0';
         if (lineptr[0] == '\0')
             continue;
+
+	parse_command(lineptr, argv);
+
         pid = fork();
         if (pid == 0)
         {
-            char *argv[2];
-            argv[0] = lineptr;
-            argv[1] = NULL;
             if (execve(argv[0], argv, environ) == -1)
             {
                 perror("Error");
@@ -40,14 +42,13 @@ int main(void)
             }
         }
             else if (pid > 0)
-            {
+            
             wait(NULL);
-            }
+            
             else
-            {
                 perror("fork");
             }
-        }
+        
         free(lineptr);
         return (0);
 }
