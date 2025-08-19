@@ -9,6 +9,8 @@
 #include <sys/wait.h>
 #include <errno.h>
 
+extern char **environ;
+
 ssize_t getline(char **lineptr, size_t *n, FILE *stream);
 
 
