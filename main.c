@@ -15,11 +15,11 @@ int main(void)
     pid_t pid;
     while (1)
     {
-        printf("$ ");
+	if (isatty(STDIN_FILENO))
+		printf("$ ");
         nread = getline(&lineptr, &len, stdin);
         if (nread == -1)
         {
-            printf("\nExit shell...\n");
             free(lineptr);
             exit(0);
         }
