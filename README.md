@@ -91,7 +91,16 @@ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 \*.c -o hsh
 
 ### Exemples d'utilisation ./hsh :
 
+MODE INTERACTIF : 
+
 <img width="1251" height="694" alt="Capture d’écran 2025-08-20 à 19 54 30" src="https://github.com/user-attachments/assets/d8e67105-fead-4b26-a530-6b3101adce42" />
+
+
+
+MODE NON INTERACTIF :
+
+<img width="1231" height="384" alt="Capture d’écran 2025-08-20 à 23 35 23" src="https://github.com/user-attachments/assets/1a98c057-faea-41d5-97f4-226a528779d2" />
+
 
 ---
 
