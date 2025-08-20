@@ -1,0 +1,116 @@
+.TH HSH 1 "Août 2025" "Version 0.1" "User Commands"
+
+.SH NAME
+hsh \- simple shell personnalisé pour exécuter des commandes Unix
+
+.SH SYNOPSIS
+.B hsh
+.RI [AUCUN ARGUMENT]
+
+.SH DESCRIPTION
+.B hsh
+est un interpréteur de commandes minimaliste conçu dans le cadre d’un projet d’apprentissage.
+
+Il fournit un prompt interactif qui permet à l’utilisateur de taper des commandes shell, qui seront ensuite exécutées dans des processus enfants à l’aide des appels systèmes POSIX (`fork`, `execve`, `wait`, etc.).
+
+Les principales fonctionnalités sont :
+
+.TP
+\fB- Exécution de commandes en chemin absolu ou relatif\fR
+Exemples :
+.nf
+  $ /bin/ls
+  $ ./mon_script.sh
+.fi
+
+.TP
+\fB- Recherche dans le PATH\fR
+Si la commande n’est pas absolue, le shell cherche dans le `PATH`.
+
+.TP
+\fB- Commande intégrée "exit"\fR
+Permet de quitter le shell proprement :
+.nf
+  $ exit
+.fi
+
+.TP
+\fB- Commande intégrée "env"\fR
+Affiche toutes les variables d’environnement :
+.nf
+  $ env
+.fi
+
+.TP
+\fB- Gestion de l’entrée non interactive\fR
+Le shell peut lire depuis un pipe ou un fichier :
+.nf
+  $ echo "ls" | ./hsh
+  $ cat script.sh | ./hsh
+.fi
+
+.TP
+\fB- Gestion des erreurs\fR
+Si une commande n’existe pas, un message d’erreur est affiché via `perror`.
+
+.SH LIMITATIONS
+Ce shell est volontairement simple et ne supporte pas encore :
+
+- Les arguments pour `exit` (ex : `exit 98`)
+- Les opérateurs comme `;`, `&&`, `||`
+- Les redirections (`>`, `<`, `>>`)
+- Les pipes (`|`)
+- Les variables d’environnement personnalisées
+- Les alias, les fonctions shell, ou les built-ins avancés
+
+.SH USAGE
+Lancer le shell :
+.nf
+  ./hsh
+.fi
+
+Utilisation interactive :
+.nf
+  $ ls
+  $ env
+  $ exit
+.fi
+
+Utilisation non-interactive :
+.nf
+  echo "ls" | ./hsh
+  echo "exit" | ./hsh
+.fi
+
+.SH RETURN VALUE
+.B hsh
+renvoie le code de retour de la dernière commande exécutée.
+
+.SH FILES
+.TP
+.B main.c
+Contient la boucle principale et la gestion du processus.
+.TP
+.B parse.c
+Gère la découpe de la ligne en tokens.
+.TP
+.B builtin.c
+Gère les commandes intégrées comme \fBexit\fR et \fBenv\fR.
+.TP
+.B env.c
+Affiche les variables d’environnement via environ.
+
+.SH AUTHORS
+Écrit par Dorian Oufer et Grégory Sala.
+
+.SH BUGS
+Aucune gestion d’erreurs complexes pour le moment.  
+Toute contribution est la bienvenue.
+
+.SH SEE ALSO
+.BR sh(1),
+.BR bash(1),
+.BR zsh(1),
+.BR execve(2),
+.BR fork(2),
+.BR wait(2)
