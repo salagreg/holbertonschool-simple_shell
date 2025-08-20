@@ -1,13 +1,10 @@
 #include "main.h"
-
 /**
  * handle_builtin - Vérifie et exécute une commande builtin
  * @argv: tableau d’arguments
  * @lineptr: ligne allouée (à libérer si besoin)
- *
  * Return: 1 si une builtin a été exécutée, 0 sinon
  */
-
 int handle_builtin(char **argv, char *lineptr)
 {
     if (argv[0] == NULL)
@@ -24,6 +21,5 @@ int handle_builtin(char **argv, char *lineptr)
         builtin_env();
         return (1);
     }
-
     return (0);
 }

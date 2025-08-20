@@ -1,7 +1,6 @@
 #include "main.h"
 
 extern char **environ;
-
 /**
  * builtin_env - affiche l'environnement
  *
