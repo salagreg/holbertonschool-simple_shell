@@ -66,6 +66,7 @@ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 \*.c -o hsh
 - wait4 _(man 2 wait4)_
 - write _(man 2 write)_
 
+
 * Tous les fichiers seront compiles sur **Ubuntu 20.04 LTS** a l'aide de **gcc**, avec les options : _-Wall -Werror -Wextra -pedantic -std=gnu89_
 * Tous les fichiers doivent se terminer par une nouvelle ligne.
 * Fichier **README.md** a la racine du projet.
@@ -90,6 +91,11 @@ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 \*.c -o hsh
 
 ### Exemples d'utilisation ./hsh :
 
+<img width="1251" height="694" alt="Capture d’écran 2025-08-20 à 19 54 30" src="https://github.com/user-attachments/assets/d8e67105-fead-4b26-a530-6b3101adce42" />
+
 ---
 
 ### Utilisation de valgrind :
+
+<img width="776" height="266" alt="Capture valgrind" src="https://github.com/user-attachments/assets/b7bd9960-1ea7-478b-9733-d2b60f1849ee" />
+
