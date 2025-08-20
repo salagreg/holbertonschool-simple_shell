@@ -5,34 +5,34 @@
  * Return: Toujours 0 (Succes), ou 1 si une erreur se produit
  */
 
-extern char **environ;
 int main(void)
 {
-    char *lineptr = NULL;
-    size_t len = 0;
-    ssize_t nread;
+	char *lineptr = NULL;
+	size_t len = 0;
+	ssize_t nread;
 
-    while (1)
-    {
-	char *argv[64];
-	if (isatty(STDIN_FILENO))
-		printf("$ ");
-        nread = getline(&lineptr, &len, stdin);
-        if (nread == -1)
-        {
-            free(lineptr);
-            exit(0);
-        }
-        if (lineptr[nread - 1] == '\n')
-            lineptr[nread - 1] = '\0';
-        if (lineptr[0] == '\0')
-            continue;
+	while (1)
+	{
+		char *argv[64];
 
-	parse_command(lineptr, argv);
+		if (isatty(STDIN_FILENO))
+			printf("$ ");
+		nread = getline(&lineptr, &len, stdin);
+		if (nread == -1)
+		{
+			free(lineptr);
+			exit(0);
+		}
+		if (lineptr[nread - 1] == '\n')
+			lineptr[nread - 1] = '\0';
+		if (lineptr[0] == '\0')
+			continue;
 
-	if (handle_builtin(argv, lineptr))
+		parse_command(lineptr, argv);
+
+		if (handle_builtin(argv, lineptr))
 		continue;
-    }
-        free(lineptr);
-        return (0);
+	}
+	free(lineptr);
+	return (0);
 }

@@ -10,20 +10,20 @@
 
 int handle_builtin(char **argv, char *lineptr)
 {
-    if (argv[0] == NULL)
-        return (0);
-    
-    if (strcmp(argv[0], "exit") == 0)
-    {
-        free(lineptr);
-        exit(0);
-	}
-    
-    else if (strcmp(argv[0], "env") == 0)
-    {
-        builtin_env();
-        return (1);
-    }
+	if (argv[0] == NULL)
+		return (0);
 
-    return (0);
+	if (strcmp(argv[0], "exit") == 0)
+	{
+		free(lineptr);
+		exit(0);
+	}
+
+	else if (strcmp(argv[0], "env") == 0)
+	{
+		builtin_env();
+		return (1);
+	}
+
+	return (0);
 }
