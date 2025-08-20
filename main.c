@@ -6,13 +6,11 @@
  */
 
 extern char **environ;
-
 int main(void)
 {
     char *lineptr = NULL;
     size_t len = 0;
     ssize_t nread;
-    pid_t pid;
 
     while (1)
     {
@@ -34,24 +32,7 @@ int main(void)
 
 	if (handle_builtin(argv, lineptr))
 		continue;
-
-        pid = fork();
-        if (pid == 0)
-        {
-            if (execve(argv[0], argv, environ) == -1)
-            {
-                perror("Error");
-                exit(1);
-            }
-        }
-            else if (pid > 0)
-            
-            wait(NULL);
-            
-            else
-                perror("fork");
-            }
-        
+    }
         free(lineptr);
         return (0);
 }
