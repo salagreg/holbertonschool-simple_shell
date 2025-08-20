@@ -84,6 +84,8 @@ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 \*.c -o hsh
 
 ### Organigramme :
 
+<img width="867" height="711" alt="flowchart_simple_shell jpg" src="https://github.com/user-attachments/assets/1cf2ee02-f558-438d-aa8f-67900f06177f" />
+
 ---
 
 ### Exemples d'utilisation ./hsh :
